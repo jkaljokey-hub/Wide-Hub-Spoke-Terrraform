@@ -46,9 +46,9 @@ module "network" {
 // Product VM
 module "vm" {
   source              = "./modules/vm"
-  resource_group_name = azurerm_resource_group.rg.name
-  location            = azurerm_resource_group.rg.location
+  resource_group_name = var.resource_group_name
+  location            = var.location
 
-  subnet3_id = module.network.subnet1_id
+  subnet3_id = module.network.subnet3_id
   subnet2_id = module.network.subnet2_id
 }
