@@ -16,6 +16,14 @@ resource "azurerm_subnet" "subnet" {
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = [var.subnet_cidr]
 }
+//bastiion subnet
+resource "azurerm_subnet" "bastion_subnet" {
+  name                 =   var.bastion_subnet_name  //AzureBastionSubnet
+  resource_group_name  = var.resource_group_name
+  virtual_network_name = azurerm_virtual_network.vnet.name
+  address_prefixes     = ["10.0.3.0/27"] # adjust to your hub VNet range
+}
+
 
 //vnet2 web-spoke
 resource "azurerm_virtual_network" "vnet2" {
@@ -50,25 +58,25 @@ resource "azurerm_subnet" "subnet3" {
 
 //product to hub
 resource "azurerm_virtual_network_peering" "hubToprod" {
-  
-  name = "mypeer"
-  resource_group_name = azurerm_resource_group.rg.name
-  virtual_network_name = azurerm_virtual_network.vnet.name
+
+  name                      = "mypeer"
+  resource_group_name       = azurerm_resource_group.rg.name
+  virtual_network_name      = azurerm_virtual_network.vnet.name
   remote_virtual_network_id = azurerm_virtual_network.vnet2.id
 
-  allow_forwarded_traffic = true
-  allow_gateway_transit = false
+  allow_forwarded_traffic      = true
+  allow_gateway_transit        = false
   allow_virtual_network_access = true
 }
 resource "azurerm_virtual_network_peering" "prodTohub" {
-  
-  name = "mysecpeer"
-  resource_group_name = azurerm_resource_group.rg.name
-  virtual_network_name = azurerm_virtual_network.vnet2.name
+
+  name                      = "mysecpeer"
+  resource_group_name       = azurerm_resource_group.rg.name
+  virtual_network_name      = azurerm_virtual_network.vnet2.name
   remote_virtual_network_id = azurerm_virtual_network.vnet.id
 
-  allow_forwarded_traffic = true
-  allow_gateway_transit = false
+  allow_forwarded_traffic      = true
+  allow_gateway_transit        = false
   allow_virtual_network_access = true
 }
 
@@ -76,25 +84,25 @@ resource "azurerm_virtual_network_peering" "prodTohub" {
 //web to hub
 
 resource "azurerm_virtual_network_peering" "hubToweb" {
-  
-  name = "webToHub "
-  resource_group_name = azurerm_resource_group.rg.name
-  virtual_network_name = azurerm_virtual_network.vnet3.name
+
+  name                      = "webToHub "
+  resource_group_name       = azurerm_resource_group.rg.name
+  virtual_network_name      = azurerm_virtual_network.vnet3.name
   remote_virtual_network_id = azurerm_virtual_network.vnet.id
 
-  allow_forwarded_traffic = true
-  allow_gateway_transit = false
+  allow_forwarded_traffic      = true
+  allow_gateway_transit        = false
   allow_virtual_network_access = true
 }
 resource "azurerm_virtual_network_peering" "webToHub" {
-  
-  name = "hubToweb"
-  resource_group_name = azurerm_resource_group.rg.name
-  virtual_network_name = azurerm_virtual_network.vnet.name
+
+  name                      = "hubToweb"
+  resource_group_name       = azurerm_resource_group.rg.name
+  virtual_network_name      = azurerm_virtual_network.vnet.name
   remote_virtual_network_id = azurerm_virtual_network.vnet3.id
 
-  allow_forwarded_traffic = true
-  allow_gateway_transit = false
+  allow_forwarded_traffic      = true
+  allow_gateway_transit        = false
   allow_virtual_network_access = true
 }
 

@@ -5,6 +5,8 @@ variable "vnet_name" {}
 variable "vnet_cidr" {}
 variable "subnet_name" {}
 variable "subnet_cidr" {}
+variable "bastion_subnet_name" {}
+variable "bastion_subnet_cidr" {}
 //vnet2
 
 variable "vnet2_name" {}

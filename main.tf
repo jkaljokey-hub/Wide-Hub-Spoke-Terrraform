@@ -29,6 +29,8 @@ module "network" {
   vnet_cidr     = "10.0.0.0/16"
   subnet_name   = "hub-subnet"
   subnet_cidr   = "10.0.1.0/24"
+  bastion_subnet_name  = "AzureBastionSubnet"
+  bastion_subnet_cidr   = "10.0.3.0/27"
 
   // Web-Spokes
   vnet2_name   = "web-spoke"
@@ -51,4 +53,15 @@ module "vm" {
 
   subnet3_id = module.network.subnet3_id
   subnet2_id = module.network.subnet2_id
+}
+
+//bastion
+
+module "bastion" {
+  source              = "./modules/bastion"
+  resource_group_name = var.resource_group_name
+  location            = var.location
+
+  # If bastion subnet is created in network module:
+  bastion_subnet_id = module.network.bastion_subnet_id
 }
