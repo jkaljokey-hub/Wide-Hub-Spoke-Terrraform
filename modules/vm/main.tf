@@ -2,8 +2,10 @@ resource "azurerm_public_ip" "pip_app" {
   name                = "pip-app"
   location            = var.location
   resource_group_name = var.resource_group_name
-  allocation_method   = "Dynamic"
+  allocation_method   = "Static"
+  sku                 = "Standard"
 }
+
 
 resource "azurerm_network_interface" "nic_app" {
   name                = "nic-app"
@@ -47,11 +49,14 @@ resource "azurerm_windows_virtual_machine" "vm_app" {
 # -------------------------
 
 resource "azurerm_public_ip" "pip_web" {
-  name                = "pip-web"
+
+  name                = "pip-app"
   location            = var.location
   resource_group_name = var.resource_group_name
-  allocation_method   = "Dynamic"
+  allocation_method   = "Static"
+  sku                 = "Standard"
 }
+
 
 resource "azurerm_network_interface" "nic_web" {
   name                = "nic-web"
