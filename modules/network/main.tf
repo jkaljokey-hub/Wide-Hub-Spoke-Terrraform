@@ -49,7 +49,7 @@ resource "azurerm_subnet" "subnet3" {
 // perring 
 
 //product to hub
-resource "azurerm_virtual_network_peering" "MyPerring" {
+resource "azurerm_virtual_network_peering" "hubToprod" {
   
   name = "mypeer"
   resource_group_name = azurerm_resource_group.rg.name
@@ -60,7 +60,7 @@ resource "azurerm_virtual_network_peering" "MyPerring" {
   allow_gateway_transit = false
   allow_virtual_network_access = true
 }
-resource "azurerm_virtual_network_peering" "MysecPerring" {
+resource "azurerm_virtual_network_peering" "prodTohub" {
   
   name = "mysecpeer"
   resource_group_name = azurerm_resource_group.rg.name
@@ -75,7 +75,7 @@ resource "azurerm_virtual_network_peering" "MysecPerring" {
 
 //web to hub
 
-resource "azurerm_virtual_network_peering" "MyPerring" {
+resource "azurerm_virtual_network_peering" "hubToweb" {
   
   name = "webToHub "
   resource_group_name = azurerm_resource_group.rg.name
@@ -86,7 +86,7 @@ resource "azurerm_virtual_network_peering" "MyPerring" {
   allow_gateway_transit = false
   allow_virtual_network_access = true
 }
-resource "azurerm_virtual_network_peering" "MysecPerring" {
+resource "azurerm_virtual_network_peering" "webToHub" {
   
   name = "hubToweb"
   resource_group_name = azurerm_resource_group.rg.name
