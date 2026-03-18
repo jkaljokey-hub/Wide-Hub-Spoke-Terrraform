@@ -24,7 +24,7 @@ resource "azurerm_windows_virtual_machine" "vm_app" {
   name                = "vm-app"
   resource_group_name = var.resource_group_name
   location            = var.location
-  size                = "Standard_B2s"
+  size                = "Standard_D2s_v3"
   admin_username      = "azureuser"
   admin_password      = "P@ssword1234!"
   network_interface_ids = [
@@ -49,8 +49,7 @@ resource "azurerm_windows_virtual_machine" "vm_app" {
 # -------------------------
 
 resource "azurerm_public_ip" "pip_web" {
-
-  name                = "pip-app"
+  name                = "pip-web"
   location            = var.location
   resource_group_name = var.resource_group_name
   allocation_method   = "Static"
@@ -75,7 +74,7 @@ resource "azurerm_windows_virtual_machine" "vm_web" {
   name                = "vm-web"
   resource_group_name = var.resource_group_name
   location            = var.location
-  size                = "Standard_B2s"
+  size                = "Standard_D2s_v3"
   admin_username      = "azureuser"
   admin_password      = "P@ssword1234!"
   network_interface_ids = [
