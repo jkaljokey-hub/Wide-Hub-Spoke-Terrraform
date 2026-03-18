@@ -45,7 +45,7 @@ resource "azurerm_windows_virtual_machine" "vm_app" {
 }
 
 # -------------------------
-# WEB VM
+# WEB VMm
 # -------------------------
 
 resource "azurerm_public_ip" "pip_web" {
