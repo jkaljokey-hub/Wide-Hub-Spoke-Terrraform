@@ -39,6 +39,8 @@ module "network" {
   vnet2_cidr           = "20.0.0.0/16"
   subnet2_name         = "sec-subnet"
   subnet2_cidr         = "20.0.1.0/24"
+  subnet3_name         = "secthird-subnet"
+  subnet3_cidr         = "20.0.2.0/24"
 
 }
 
