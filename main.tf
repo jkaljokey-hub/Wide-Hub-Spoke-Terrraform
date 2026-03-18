@@ -30,7 +30,7 @@ module "network" {
   subnet_name   = "hub-subnet"
   subnet_cidr   = "10.0.1.0/24"
 
-  // Web-Spoke
+  // Web-Spokes
   vnet2_name   = "web-spoke"
   vnet2_cidr   = "20.0.0.0/16"
   subnet2_name = "sec-subnet"
