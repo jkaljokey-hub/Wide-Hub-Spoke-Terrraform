@@ -11,14 +11,7 @@ terraform {
     storage_account_name = "tfstateabubakar123"
     container_name       = "tfstate"
     key                  = "terraform.tfstate"
-  
-}
-
-
-
-
-
-  
+  }
 }
 
 provider "azurerm" {
@@ -26,23 +19,28 @@ provider "azurerm" {
 }
 
 module "network" {
-  source              = "./modules/network"
+  source = "./modules/network"
+
   resource_group_name = var.resource_group_name
   location            = var.location
-  vnet_name           = "demo-vnet"
-  vnet_cidr           = "10.0.0.0/16"
-  subnet_name         = "demo-subnet"
-  subnet_cidr         = "10.0.1.0/24"
 
-  //vnet2
-  vnet2_name           = "sec-vnet"
-  vnet2_cidr           = "20.0.0.0/16"
-  subnet2_name         = "sec-subnet"
-  subnet2_cidr         = "20.0.1.0/24"
-  subnet3_name         = "secthird-subnet"
-  subnet3_cidr         = "20.0.2.0/24"
-  subnet4_name         = "secthirdfg-subnet"
-  subnet4_cidr         = "20.0.3.0/24"
+  // Hub
+  vnet_name     = "Hub-vnet"
+  vnet_cidr     = "10.0.0.0/16"
+  subnet_name   = "hub-subnet"
+  subnet_cidr   = "10.0.1.0/24"
 
+  // Web-Spoke
+  vnet2_name   = "web-spoke"
+  vnet2_cidr   = "20.0.0.0/16"
+  subnet2_name = "sec-subnet"
+  subnet2_cidr = "20.0.1.0/24"
+
+  // Product-Spoke
+  vnet3_name   = "product-spoke"
+  vnet3_cidr   = "30.0.0.0/16"
+  subnet3_name = "product-subnet"
+  subnet3_cidr = "30.0.1.0/24"
 }
 
+// Product VM

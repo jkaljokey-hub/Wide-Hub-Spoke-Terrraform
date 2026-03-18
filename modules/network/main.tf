@@ -2,7 +2,7 @@ resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
   location = var.location
 }
-//vnet
+//vnet hub
 resource "azurerm_virtual_network" "vnet" {
   name                = var.vnet_name
   address_space       = [var.vnet_cidr]
@@ -17,7 +17,7 @@ resource "azurerm_subnet" "subnet" {
   address_prefixes     = [var.subnet_cidr]
 }
 
-//vnet2
+//vnet2 web-spoke
 resource "azurerm_virtual_network" "vnet2" {
   name                = var.vnet2_name
   address_space       = [var.vnet2_cidr]
@@ -30,17 +30,18 @@ resource "azurerm_subnet" "subnet2" {
   virtual_network_name = azurerm_virtual_network.vnet2.name
   address_prefixes     = [var.subnet2_cidr]
 }
+//vnet3 proudct-spoke
+resource "azurerm_virtual_network" "vnet3" {
+  name                = var.vnet3_name
+  address_space       = [var.vnet3_cidr]
+  location            = var.location
+  resource_group_name = azurerm_resource_group.rg.name
+}
 resource "azurerm_subnet" "subnet3" {
   name                 = var.subnet3_name
   resource_group_name  = azurerm_resource_group.rg.name
-  virtual_network_name = azurerm_virtual_network.vnet2.name
+  virtual_network_name = azurerm_virtual_network.vnet3.name
   address_prefixes     = [var.subnet3_cidr]
-}
-resource "azurerm_subnet" "subnet4" {
-  name                 = var.subnet4_name
-  resource_group_name  = azurerm_resource_group.rg.name
-  virtual_network_name = azurerm_virtual_network.vnet2.name
-  address_prefixes     = [var.subnet4_cidr]
 }
 
 
