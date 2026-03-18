@@ -41,6 +41,8 @@ module "network" {
   subnet2_cidr         = "20.0.1.0/24"
   subnet3_name         = "secthird-subnet"
   subnet3_cidr         = "20.0.2.0/24"
+  subnet4_name         = "secthirdfg-subnet"
+  subnet4_cidr         = "20.0.3.0/24"
 
 }
 
