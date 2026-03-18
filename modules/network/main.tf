@@ -79,7 +79,7 @@ resource "azurerm_virtual_network_peering" "hubToweb" {
   
   name = "webToHub "
   resource_group_name = azurerm_resource_group.rg.name
-  virtual_network_name = azurerm_virtual_network3.vnet.name
+  virtual_network_name = azurerm_virtual_network.vnet3.name
   remote_virtual_network_id = azurerm_virtual_network.vnet.id
 
   allow_forwarded_traffic = true
