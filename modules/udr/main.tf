@@ -1,29 +1,19 @@
-resource "azurerm_public_ip" "firewall_pip" {
-  name                = "firewall-pip"
+resource "azurerm_route_table" "rt" {
+  name                = var.route_table_name
   location            = var.location
   resource_group_name = var.resource_group_name
-  allocation_method   = "Static"
-  sku                 = "Standard"
 }
 
-resource "azurerm_firewall_policy" "fw_policy" {
-  name                = "fw-policy"
-  resource_group_name = var.resource_group_name
-  location            = var.location
+resource "azurerm_route" "default_route" {
+  name                   = "default-to-firewall"
+  resource_group_name    = var.resource_group_name
+  route_table_name       = azurerm_route_table.rt.name
+  address_prefix         = "0.0.0.0/0"
+  next_hop_type          = "VirtualAppliance"
+  next_hop_in_ip_address = var.firewall_private_ip
 }
 
-resource "azurerm_firewall" "firewall" {
-  name                = "hub-firewall"
-  location            = var.location
-  resource_group_name = var.resource_group_name
-  sku_name            = "AZFW_VNet"
-  sku_tier            = "Standard"
-
-  ip_configuration {
-    name                 = "fw-ipconfig"
-    subnet_id            = var.firewall_subnet
-    public_ip_address_id = azurerm_public_ip.firewall_pip.id
-  }
-
-  firewall_policy_id = azurerm_firewall_policy.fw_policy.id
+resource "azurerm_subnet_route_table_association" "assoc" {
+  subnet_id      = var.subnet_id
+  route_table_id = azurerm_route_table.rt.id
 }
