@@ -1,10 +1,4 @@
-resource "azurerm_public_ip" "pip_app" {
-  name                = "pip-app"
-  location            = var.location
-  resource_group_name = var.resource_group_name
-  allocation_method   = "Static"
-  sku                 = "Standard"
-}
+
 
 
 resource "azurerm_network_interface" "nic_app" {
@@ -16,7 +10,6 @@ resource "azurerm_network_interface" "nic_app" {
     name                          = "ipconfig1"
     subnet_id                     = var.subnet2_id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.pip_app.id
   }
 }
 
@@ -48,13 +41,7 @@ resource "azurerm_windows_virtual_machine" "vm_app" {
 # WEB VMm
 # -------------------------
 
-resource "azurerm_public_ip" "pip_web" {
-  name                = "pip-web"
-  location            = var.location
-  resource_group_name = var.resource_group_name
-  allocation_method   = "Static"
-  sku                 = "Standard"
-}
+
 
 
 resource "azurerm_network_interface" "nic_web" {
@@ -66,7 +53,6 @@ resource "azurerm_network_interface" "nic_web" {
     name                          = "ipconfig1"
     subnet_id                     = var.subnet3_id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.pip_web.id
   }
 }
 
