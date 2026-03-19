@@ -76,3 +76,26 @@ module "firewall" {
   location            = var.location
   firewall_subnet = module.network.firewall_subnet
 }
+
+
+//UDR
+
+module "udr_web" {
+  source              = "./modules/udr"
+  resource_group_name = var.resource_group_name
+  location            = var.location
+
+  route_table_name    = "rt-web"
+  subnet_id           = module.network.subnet2_id
+  firewall_private_ip = module.firewall.firewall_private_ip
+}
+
+module "udr_product" {
+  source              = "./modules/udr"
+  resource_group_name = var.resource_group_name
+  location            = var.location
+
+  route_table_name    = "rt-product"
+  subnet_id           = module.network.subnet3_id
+  firewall_private_ip = module.firewall.firewall_private_ip
+}
