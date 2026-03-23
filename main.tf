@@ -69,7 +69,7 @@ module "bastion" {
 }
 
 
-//firewall
+//firewalll
 module "firewall" {
   source              = "./modules/firewall"
   resource_group_name = var.resource_group_name
@@ -99,3 +99,15 @@ module "udr_product" {
   subnet_id           = module.network.subnet3_id
   firewall_private_ip = module.firewall.firewall_private_ip
 }
+
+
+
+module "log_analytics" {
+  source              = "./modules/log_analytics"
+  resource_group_name = var.resource_group_name
+  location            = var.location
+
+  workspace_name     = "demo-law"
+  retention_in_days  = 30
+}
+
