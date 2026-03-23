@@ -34,7 +34,7 @@ module "network" {
 
   firewall_subnet_name = "AzureFirewallSubnet"
   firewall_subnet      = "10.0.4.0/26"
-  // Web-Spokes
+  // Web-Spoke
   vnet2_name   = "web-spoke"
   vnet2_cidr   = "20.0.0.0/16"
   subnet2_name = "sec-subnet"
