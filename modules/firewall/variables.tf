@@ -9,7 +9,7 @@ variable "location" {
 
 
 variable "firewall_subnet" {
-  type    = string
- // default = "10.0.4.0/26"
+  type = string
+  // default = "10.0.4.0/26"
 }
 

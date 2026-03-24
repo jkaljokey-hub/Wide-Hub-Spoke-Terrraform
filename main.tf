@@ -74,7 +74,7 @@ module "firewall" {
   source              = "./modules/firewall"
   resource_group_name = var.resource_group_name
   location            = var.location
-  firewall_subnet = module.network.firewall_subnet
+  firewall_subnet     = module.network.firewall_subnet
 }
 
 
@@ -107,7 +107,7 @@ module "log_analytics" {
   resource_group_name = var.resource_group_name
   location            = var.location
 
-  workspace_name     = "demo-law"
-  retention_in_days  = 30
+  workspace_name    = "demo-law"
+  retention_in_days = 30
 }
 

@@ -11,6 +11,7 @@ variable "firewall_subnet_name" {}
 variable "firewall_subnet" {}
 //vnet2
 
+
 variable "vnet2_name" {}
 variable "vnet2_cidr" {}
 variable "subnet2_name" {}
