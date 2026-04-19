@@ -1,8 +1,11 @@
 # 🏗️ Project Overview
 This project implements a secure Hub‑and‑Spoke network architecture on Microsoft Azure, following real enterprise design patterns.
+
 The Hub VNet centralizes all shared services such as Azure Firewall, Bastion, UDRs, and Log Analytics, while Spoke VNets host isolated workloads like Web and App virtual machines.
 
-This architecture improves security, scalability, and operational control across distributed workloads.
+ ## 📊 Architecture Diagram
+![Hub and spoke Azure Architecture](https://github.com/jkaljokey-hub/Wide-Hub-Spoke-Terrraform/blob/master/assert/1773163439262.jpeg?raw=true)
+
 
 ## 🔐 Architecture Components
 Hub VNet (Centralized Services)
