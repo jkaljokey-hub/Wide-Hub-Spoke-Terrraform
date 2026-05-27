@@ -21,80 +21,80 @@ Enables secure RDP/SSH access to VMs without exposing public IPs.
 Forces traffic from spokes to pass through the firewall for inspection.
 
 ### Log Analytics Workspace (LAW)  
-Collects logs from Firewall, VMs, and NSGs for monitoring and security analysis.
+-  Collects logs from Firewall, VMs, and NSGs for monitoring and security analysis.
 
- Spoke VNets (Workload Networks)
-Spoke VNet 1 — Web Tier
-Hosts the Web VM
+-   Spoke VNets (Workload Networks)
+-  Spoke VNet 1 — Web Tier
+-  Hosts the Web VM
+   
+-  Connected to Hub via VNet Peering
 
-Connected to Hub via VNet Peering
+-  Routes outbound traffic through Azure Firewall
 
-Routes outbound traffic through Azure Firewall
+-  Spoke VNet 2 — App Tier
+-  Hosts the App VM
 
-Spoke VNet 2 — App Tier
-Hosts the App VM
+-  Connected to Hub via VNet Peering
 
-Connected to Hub via VNet Peering
-
-Isolated from Web tier unless explicitly allowed
+-  Isolated from Web tier unless explicitly allowed
 
 ## 🌐 Network Flow Summary
-Traffic originates from Internet / On‑Premises
+-  Traffic originates from Internet / On‑Premises
 
-Enters the Hub VNet
+-  Enters the Hub VNet
 
-Passes through Azure Firewall for filtering
+-  Passes through Azure Firewall for filtering
 
-Routed to the appropriate Spoke VNet
+-  Routed to the appropriate Spoke VNet
 
-Web/App VMs communicate securely through VNet Peering
+-  Web/App VMs communicate securely through VNet Peering
 
-All logs are collected in Log Analytics Workspace
+-  All logs are collected in Log Analytics Workspace
 
 ## 🚀 Key Features
-Zero public IPs on workload VMs
+-  Zero public IPs on workload VMs
 
-Centralized security using Azure Firewall
+-  Centralized security using Azure Firewall
 
-Secure remote access with Azure Bastion
+-  Secure remote access with Azure Bastion
 
-Forced tunneling using UDRs
+-  Forced tunneling using UDRs
 
-Full observability with Log Analytics
+-  Full observability with Log Analytics
 
-Scalable Hub‑and‑Spoke topology for multi‑tier applications
+-  Scalable Hub‑and‑Spoke topology for multi‑tier applications
 
 ## 🛠️ Technologies Used
-Azure Virtual Network (Hub & Spokes)
+-  Azure Virtual Network (Hub & Spokes)
 
-Azure Firewall
+-  Azure Firewall
 
-Azure Bastion
+-  Azure Bastion
 
-User Defined Routes (UDR)
+-  User Defined Routes (UDR)
 
-Log Analytics Workspace
+-  Log Analytics Workspace
 
-Network Security Groups (NSG)
+-  Network Security Groups (NSG)
 
-Virtual Machines (Linux/Windows)
+-  Virtual Machines (Linux/Windows)
 
 ## 🎯 What This Project Demonstrates
-Enterprise‑grade network segmentation
+-  Enterprise‑grade network segmentation
 
-Secure workload isolation
+-  Secure workload isolation
 
-Centralized traffic inspection
+-  Centralized traffic inspection
 
-Azure-native security and monitoring
+-  Azure-native security and monitoring
 
-Real‑world cloud architecture design
+-  Real‑world cloud architecture design
 
 ## 📄 Use Cases
-Multi‑tier applications (Web → App → DB)
+-  Multi‑tier applications (Web → App → DB)
 
-Secure hybrid connectivity
+-  Secure hybrid connectivity
 
-Centralized security enforcement
+-  Centralized security enforcement
 
-Scalable enterprise network design
+-  Scalable enterprise network design
