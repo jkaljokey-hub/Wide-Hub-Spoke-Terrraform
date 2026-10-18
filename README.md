@@ -12,7 +12,7 @@ The architecture consists of a central hub virtual network hosting shared networ
 
 ### Architecture Diagram
 
-
+  ![Hub and spoke Azure Architecture](https://github.com/jkaljokey-hub/Wide-Hub-Spoke-Terrraform/blob/master/assert/Azure%20Hub-and-Spoke%20Terraform%20Architecture.png?raw=true)
 
 ## Architecture
 
